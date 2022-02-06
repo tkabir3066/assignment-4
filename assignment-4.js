@@ -1,74 +1,83 @@
- 
-  //PROBLEM-1
+//PROBLEM-1
 
- function anaToVori(ana){
-     const vori = ana/16;
-     return vori ;
- }
+function anaToVori(ana) {
+  if (typeof ana != "number") {
+    return "please give a number";
+  }
+  if (ana < 0) {
+    return "please enter a positive number greater than 0";
+  }
+  const vori = ana / 16;
+  return vori;
+}
 
- const quantity = anaToVori(16);
- console.log(quantity);
+const quantity = anaToVori(32);
+console.log(quantity);
 
-
-
-
-
- //PROBLEM-2
+//PROBLEM-2
 
 function pandaCost(singara, shomucha, jilapi) {
-  let totalPrice =( singara * 7) + (shomucha * 10) + (jilapi * 15);
+  if (
+    typeof singara != "number" ||
+    shomucha != "number" ||
+    jilapi != "number"
+  ) {
+    return "please enter a number";
+  }
+
+  let totalPrice = singara * 7 + shomucha * 10 + jilapi * 15;
 
   return totalPrice;
 }
 const total = pandaCost(25, 5, 25);
 console.log(total);
 
-
-
 // PROBLEM-3
 
-function picnicBudget(numbers){
- if(numbers<=100){
-    let total = 100*5000;
+function picnicBudget(numbers) {
+  if (typeof numbers != "number") {
+    return "Enter a valid number";
+  }
+  if (typeof numbers < 0) {
+    return "please enter a positive number greater than 0";
+  }
+  const firstPerHeadBudget = 5000;
+  const secondPerHeadBudget = 4000;
+  const remainigPerHeadBudget = 3000;
+
+  if (numbers <= 100) {
+    const total = numbers * firstPerHeadBudget;
     return total;
- }
-  
- else if(numbers>100 && numbers<=200){
-     let firstHundred = 5000;
-     let remaining = 4000;
-     let total =(5000*100) + (4000*100)
- }
+  } else if (numbers <= 200) {
+    const firstHundred = 100 * firstPerHeadBudget;
 
- else if(numbers>100 && numbers<=200 && numbers>200){
-    let firstHundred = 5000;
-    let secondHundred = 4000;
-    let remaining = 3000;
+    const secondHundred = (numbers - 100) * secondPerHeadBudget;
+    const totalBudget = firstHundred + secondHundred;
+    return totalBudget;
+  } else {
+    const firstHundred = 100 * firstPerHeadBudget;
+    const secondHundred = 100 * secondPerHeadBudget;
 
+    const restBudget = (numbers - 200) * remainigPerHeadBudget;
+    const finalBudget = firstHundred + secondHundred + restBudget;
+    return finalBudget;
+  }
 }
-}
 
+const totalMoney = picnicBudget(211);
+console.log(totalMoney);
 
-
-
-
-
-
-
-
-
-
-
-//PROBLEM-4
+// //PROBLEM-4
 
 function oddFriend(names) {
-
-    for (const element of names) {
-
-      if (element.length % 2 != 0) {
-        return element;
-      }
-    }
-
+  if (typeof names != "element" || names == "number") {
+    return "Enter valid element";
   }
+  for (const element of names) {
+    if (element.length % 2 != 0) {
+      return element;
+    }
+  }
+}
 
-  console.log(oddFriend(["Tutul", "Mridul", "Ayan", "Ayaz", "Soyab", "Atif"]));
+console.log(oddFriend(["Tutul", "Mridul", "Ayan", "Ayaz", "Soyab", "Atif"]));
